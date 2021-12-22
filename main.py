@@ -86,7 +86,7 @@ elif add_selectbox == 'Dataset':
             col1.image(image,width=500)
 
             col2.markdown('<b>T Mean Computation:</b>', unsafe_allow_html=True)
-            image = Image.open('ETo_t_mean_computation.png')
+            image = Image.open('ETo_t_mean_computation.PNG')
             col2.image(image,width=300)
 
             col2.markdown('<b>References:</b>', unsafe_allow_html=True)
@@ -239,7 +239,7 @@ elif add_selectbox == 'Collaborators':
     
     col1, col2 = st.columns([3,8])
     
-    image = Image.open('logo.png')
+    image = Image.open('logo.PNG')
     col1.image(image,width=250)
     col1.markdown('<center><a href="https://omdena.com/omdena-chapter-page-philippines/" target="_blank">Omdena Philippines</a></center>', unsafe_allow_html=True)
     col2.markdown('<br><br><b>Project Manager:</b> <a href="https://www.linkedin.com/in/jester-carlos-3410831a7/" target="_blank">Jester Carlos</a>', unsafe_allow_html=True)
