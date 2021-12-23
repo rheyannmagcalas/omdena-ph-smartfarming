@@ -240,57 +240,57 @@ elif add_selectbox == 'Modelling':
             </table>''', unsafe_allow_html=True)
 
         col1, col2 = st.columns([7, 4])
-        image = Image.open('images/T_mean_weekly.PNG')
+        image = Image.open('images/T_mean_weekly.png')
         col1.image(image,width=800)
         col2.write('Prediction Components')
         
-        image = Image.open('images/T_mean_components_weekly.PNG')
+        image = Image.open('images/T_mean_components_weekly.png')
         col2.image(image,width=400)
 
         st.markdown('<hr>', unsafe_allow_html=True)
 
         col1, col2 = st.columns([7, 4])
-        image = Image.open('images/T_mean_monthly.PNG')
+        image = Image.open('images/T_mean_monthly.png')
         col1.image(image,width=800)
         
         col2.write('Prediction Components')
-        image = Image.open('images/T_mean_monthly_components.PNG')
+        image = Image.open('images/T_mean_monthly_components.png')
         col2.image(image,width=400)
 
     elif prediction_selectbox ==  'Crop Water Need (ETcrop)':
         col1, col2 = st.columns([7, 4])
-        image = Image.open('images/ETCrop_weekly.PNG')
+        image = Image.open('images/ETCrop_weekly.png')
         col1.image(image,width=800)
         col2.write('Prediction Components')
         
-        image = Image.open('images/ETCrop_weekly_components.PNG')
+        image = Image.open('images/ETCrop_weekly_components.png')
         col2.image(image,width=400)
 
         st.markdown('<hr>', unsafe_allow_html=True)
 
         col1, col2 = st.columns([7, 4])
-        image = Image.open('images/ETCrop_monthly.PNG')
+        image = Image.open('images/ETCrop_monthly.png')
         col1.image(image,width=800)
         col2.write('Prediction Components')
-        image = Image.open('images/ETCrop_monthly_components.PNG')
+        image = Image.open('images/ETCrop_monthly_components.png')
         col2.image(image,width=400)
 
     elif prediction_selectbox ==  'Irrigation Water Need':
         col1, col2 = st.columns([7, 4])
-        image = Image.open('images/INRice_weekly.PNG')
+        image = Image.open('images/INRice_weekly.png')
         col1.image(image,width=800)
         col2.write('Prediction Components')
         
-        image = Image.open('images/INRice_weekly_components.PNG')
+        image = Image.open('images/INRice_weekly_components.png')
         col2.image(image,width=400)
 
         st.markdown('<hr>', unsafe_allow_html=True)
 
         col1, col2 = st.columns([7, 4])
-        image = Image.open('images/INRice_monthly.PNG')
+        image = Image.open('images/INRice_monthly.png')
         col1.image(image,width=800)
         col2.write('Prediction Components')
-        image = Image.open('images/INRice_monthly_components.PNG')
+        image = Image.open('images/INRice_monthly_components.png')
         col2.image(image,width=400)
     
    
