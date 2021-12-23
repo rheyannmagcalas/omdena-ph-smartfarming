@@ -31,6 +31,9 @@ st.markdown(
     .css-1d391kg {
         background-color:  #a9dfbf  !important;
     }
+    .metric-container, .css-1ht1j8u {
+        margin-left:5% !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -216,24 +219,96 @@ elif add_selectbox == 'Dataset':
 elif add_selectbox == 'Modelling':
     prediction_selectbox = st.selectbox(
     "Prediction Interval",
-        ("Overall Process", "Daily", "Weekly", "Monthly")
+        ("ETo", "Crop Water Need (ETcrop)", "Irrigation Water Need")
     )
+    
+    if prediction_selectbox == 'ETo':
+        with st.expander("Model Metrics:"):
+            st.markdown('''
+                <table>
+                    <tr>
+                        <th>Model</th>
+                        <th>RSME</th>
+                        <th>MSE</th>
+                    </tr>
+                    <tr>
+                        <td>FB Prophet</td>
+                        <td>0.86</td>
+                        <td>0.74</td>
+                    </tr>
+                </table>
+            </table>''', unsafe_allow_html=True)
+
+        col1, col2 = st.columns([7, 4])
+        image = Image.open('images/T_mean_weekly.PNG')
+        col1.image(image,width=800)
+        col2.write('Prediction Components')
+        
+        image = Image.open('images/T_mean_components_weekly.PNG')
+        col2.image(image,width=400)
+
+        st.markdown('<hr>', unsafe_allow_html=True)
+
+        col1, col2 = st.columns([7, 4])
+        image = Image.open('images/T_mean_monthly.PNG')
+        col1.image(image,width=800)
+        
+        col2.write('Prediction Components')
+        image = Image.open('images/T_mean_monthly_components.PNG')
+        col2.image(image,width=400)
+
+    elif prediction_selectbox ==  'Crop Water Need (ETcrop)':
+        col1, col2 = st.columns([7, 4])
+        image = Image.open('images/ETCrop_weekly.PNG')
+        col1.image(image,width=800)
+        col2.write('Prediction Components')
+        
+        image = Image.open('images/ETCrop_weekly_components.PNG')
+        col2.image(image,width=400)
+
+        st.markdown('<hr>', unsafe_allow_html=True)
+
+        col1, col2 = st.columns([7, 4])
+        image = Image.open('images/ETCrop_monthly.PNG')
+        col1.image(image,width=800)
+        col2.write('Prediction Components')
+        image = Image.open('images/ETCrop_monthly_components.PNG')
+        col2.image(image,width=400)
+
+    elif prediction_selectbox ==  'Irrigation Water Need':
+        col1, col2 = st.columns([7, 4])
+        image = Image.open('images/INRice_weekly.PNG')
+        col1.image(image,width=800)
+        col2.write('Prediction Components')
+        
+        image = Image.open('images/INRice_weekly_components.PNG')
+        col2.image(image,width=400)
+
+        st.markdown('<hr>', unsafe_allow_html=True)
+
+        col1, col2 = st.columns([7, 4])
+        image = Image.open('images/INRice_monthly.PNG')
+        col1.image(image,width=800)
+        col2.write('Prediction Components')
+        image = Image.open('images/INRice_monthly_components.PNG')
+        col2.image(image,width=400)
+    
    
     
-    if st.button('Search'):
-        for _prediction_variables in prediction_variables:
-            fb_prophet_monthly_model = joblib.load('models/fb_prophet_monthly_{}.sav'.format(_prediction_variables))
-            monthyly_forecast_data = pd.read_csv('data/fb_prophet_monthly_{}.csv'.format(_prediction_variables))
-            monthyly_forecast_data['ds'] = pd.to_datetime(monthyly_forecast_data['ds'])
+    
+        # for _prediction_variables in prediction_variables:
+        #     fb_prophet_monthly_model = joblib.load('models/fb_prophet_monthly_{}.sav'.format(_prediction_variables))
+        #     monthyly_forecast_data = pd.read_csv('data/fb_prophet_monthly_{}.csv'.format(_prediction_variables))
+        #     monthyly_forecast_data['ds'] = pd.to_datetime(monthyly_forecast_data['ds'])
 
-            fb_prophet_monthly_plot = fb_prophet_monthly_model.plot(monthyly_forecast_data, figsize=(8, 4))
-            ax = fb_prophet_monthly_plot.gca()
-            ax.set_title("{} Monthly Prediction".format(_prediction_variables) , size=12)
-            ax.set_xlabel("Mean", size=10)
-            ax.set_ylabel("Dates", size=10)
-            ax.tick_params(axis="x", labelsize=10)
-            ax.tick_params(axis="y", labelsize=10)
-            st.write(fb_prophet_monthly_plot)
+        #     fb_prophet_monthly_plot = fb_prophet_monthly_model.plot(monthyly_forecast_data, figsize=(8, 4))
+        #     ax = fb_prophet_monthly_plot.gca()
+        #     ax.set_title("{} Monthly Prediction".format(_prediction_variables) , size=12)
+        #     ax.set_xlabel("Mean", size=10)
+        #     ax.set_ylabel("Dates", size=10)
+        #     ax.tick_params(axis="x", labelsize=10)
+        #     ax.tick_params(axis="y", labelsize=10)
+        #     st.write(fb_prophet_monthly_plot)
             
 elif add_selectbox == 'Collaborators':
     
